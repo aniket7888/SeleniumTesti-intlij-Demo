@@ -9,7 +9,7 @@ import java.time.Duration;
 
 public class launchingwebsit {
     public static void main(String[] args) {
-        System.setProperty("webdriver.chrome.driver", "\\Maven-project-development\\Selenium-Practice-Test\\sourceDriver\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "\\Maven-project-development\\ChromeDriver\\chromedriver.exe");
             WebDriver driver=new ChromeDriver();
             driver.get("https://www.google.com");
             driver.manage().window().maximize();
