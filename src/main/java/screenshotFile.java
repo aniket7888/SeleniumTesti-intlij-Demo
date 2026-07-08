@@ -3,7 +3,6 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.apache.commons.io.FileUtils;
 import java.io.File;
 
 public class screenshotFile {
@@ -16,6 +15,5 @@ public class screenshotFile {
         driver.manage().window().maximize();
         driver.get("https://expired.badssl.com/");
         File src =((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-      //  FileUtiles.copyFile(src,new File(".\\Supportingfile\\Screenshotscreenshot.png"));
     }
 }
