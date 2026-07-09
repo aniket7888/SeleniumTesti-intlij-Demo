@@ -58,6 +58,7 @@ public class handlingAmazonWindows {
     public static void closeChrome() {
         if (driver != null) {
             driver.quit();
+
         }
     }
 }
