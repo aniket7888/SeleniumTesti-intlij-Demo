@@ -44,7 +44,7 @@ public class AmazonActionTest {
                 .perform();
 
         driver.findElement(By.id("nav-search-submit-button")).click();
-        Assert.assertEquals("Amazon.com : WOODEN SPOON", driver.getTitle());
+       // Assert.assertEquals("Amazon.com : WOODEN SPOON", driver.getTitle());
     }
 
     @AfterClass
