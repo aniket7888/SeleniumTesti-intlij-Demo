@@ -1,5 +1,3 @@
-package org.example;
-
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -9,12 +7,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.security.Key;
 import java.time.Duration;
-import java.util.Collections;
-import java.util.Set;
 
-public class handlingAmazonWindows {
+public class  handlingAmazonWindows {
     static WebDriver driver;
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
@@ -23,7 +18,7 @@ public class handlingAmazonWindows {
         System.setProperty("webdriver.chrome.driver", "\\Maven-project-development\\ChromeDriver\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(java.time.Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
     }
 
@@ -46,7 +41,6 @@ public class handlingAmazonWindows {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
             Assert.assertEquals("Amazon.com: Apple iPhone 17 Pro Max, US Version, 256GB, eSIM, Cosmic Orange- Unlocked (Renewed) : Cell Phones & Accessories", driver.getTitle());
             if (driver.getWindowHandles().equals(parentWindowHandle)) {
-                driver.manage().timeouts().implicitlyWait(java.time.Duration.ofSeconds(10));
                 driver.close();
             }
 

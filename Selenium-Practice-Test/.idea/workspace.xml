@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="03eeb816-2505-48ee-9154-6b3bffc73db7" name="Changes" comment="launching amazon websit &#10;Using Selector call to select search iteam and selecting one single item from list">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/java/handlingAmazonWindows.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/java/switchthePosition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/java/windowIframe.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="calenderPractice" />
+        <entry key="$PROJECT_DIR$/.." value="Selenium-Practice" />
         <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
