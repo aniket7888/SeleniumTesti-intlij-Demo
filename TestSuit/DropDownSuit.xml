@@ -1,9 +1,7 @@
 <suite name="Default Suite">
-    <test thread-count="5" name="Maven-project-development">
+    <test thread-count="5" name="DropDown">
         <classes>
             <class name="dropdownclass"/>
         </classes>
     </test>
-    <!--  Maven-project-development  -->
 </suite>
-        <!--  Default Suite  -->

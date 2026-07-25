@@ -23,8 +23,6 @@ public class dropdownclass {
         driver.manage().timeouts().implicitlyWait(java.time.Duration.ofSeconds(10));
     }
 
-
-
     @Test(priority = 1)
     public void dropdownclass1() {
         driver.get("https://rahulshettyacademy.com/AutomationPractice/");
@@ -35,7 +33,6 @@ public class dropdownclass {
 
         }
         drop.selectByVisibleText("Option2");
-        // Assert.assertEquals(expected, actual) in TestNG expects (actual, expected)
         Assert.assertEquals(drop.getFirstSelectedOption().getText(), "Option2");
     }
     @Test(priority = 2)
@@ -56,13 +53,22 @@ public class dropdownclass {
     }
     @Test(priority = 3)
     public void checkboxClick(){
-      //  driver.switchTo().newWindow(WindowType.TAB);
+        driver.switchTo().newWindow(WindowType.TAB);
         driver.get("https://rahulshettyacademy.com/AutomationPractice/");
         WebElement checkbox = driver.findElement(By.xpath("(//input[@type='checkbox'])[2]"));
         checkbox.click();
         Assert.assertTrue(checkbox.isSelected());
     }
-    @AfterClass
+
+    @Test(priority = 4)
+    public void radioButton(){
+        driver.switchTo().newWindow(WindowType.TAB);
+        driver.get("https://rahulshettyacademy.com/AutomationPractice/");
+        WebElement radioButton = driver.findElement(By.xpath("(//input[@name='radioButton'])[1]"));
+        radioButton.click();
+        Assert.assertTrue(radioButton.isSelected());
+
+    }    @AfterClass
     public static void chromeclose () {
             if (driver != null) {
                 driver.quit();
