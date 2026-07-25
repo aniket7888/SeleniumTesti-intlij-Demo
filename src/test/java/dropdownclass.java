@@ -1,19 +1,19 @@
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WindowType;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 
 import java.util.List;
 
 public class dropdownclass {
-  static   WebDriver driver;
+    static WebDriver driver;
 
     @BeforeClass
     public static void setup(){
@@ -25,7 +25,7 @@ public class dropdownclass {
 
 
 
-    @Test
+    @Test(priority = 1)
     public void dropdownclass1() {
         driver.get("https://rahulshettyacademy.com/AutomationPractice/");
         WebElement dropdown = driver.findElement(By.xpath("//select[@id='dropdown-class-example']"));
@@ -35,9 +35,10 @@ public class dropdownclass {
 
         }
         drop.selectByVisibleText("Option2");
-      Assert.assertEquals("Option2", drop.getFirstSelectedOption().getText());
+        // Assert.assertEquals(expected, actual) in TestNG expects (actual, expected)
+        Assert.assertEquals(drop.getFirstSelectedOption().getText(), "Option2");
     }
-    @Test
+    @Test(priority = 2)
     public void dropdownclass2() {
         driver.switchTo().newWindow(WindowType.TAB);
         driver.get("https://rahulshettyacademy.com/AutomationPractice/");
@@ -51,9 +52,9 @@ public class dropdownclass {
                 break;
             }
         }
-        Assert.assertEquals("Australia", dropdownElement.getAttribute("value"));
+        Assert.assertEquals(dropdownElement.getAttribute("value"), "Australia");
     }
-    @Test
+    @Test(priority = 3)
     public void checkboxClick(){
       //  driver.switchTo().newWindow(WindowType.TAB);
         driver.get("https://rahulshettyacademy.com/AutomationPractice/");
@@ -61,10 +62,10 @@ public class dropdownclass {
         checkbox.click();
         Assert.assertTrue(checkbox.isSelected());
     }
-        @AfterClass
-        public static void chromeclose () {
+    @AfterClass
+    public static void chromeclose () {
             if (driver != null) {
                 driver.quit();
             }
         }
-    }
+}
