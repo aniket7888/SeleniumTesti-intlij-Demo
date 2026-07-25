@@ -5,8 +5,10 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WindowType;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+
 
 import java.util.List;
 
@@ -20,23 +22,41 @@ public class dropdownclass {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(java.time.Duration.ofSeconds(10));
     }
+
+
+
     @Test
-    public void dropdownclass1(){
+    public void dropdownclass1() {
         driver.get("https://rahulshettyacademy.com/AutomationPractice/");
-        WebElement dropdown = driver.findElement(By.id("dropdown-class-example"));
-        Select drop = new  Select(dropdown);
-        List<WebElement> list = drop.getOptions();
-        System.out.println(list);
-        drop.selectByVisibleText("India");
-        Assert.assertEquals("India",drop.getFirstSelectedOption().getText());
+        WebElement dropdown = driver.findElement(By.xpath("//select[@id='dropdown-class-example']"));
+        Select drop = new Select(dropdown);
+        for(WebElement option : drop.getOptions()){
+            System.out.println("Option: " + option.getText());
+
+        }
+        drop.selectByVisibleText("Option2");
+      Assert.assertEquals("Option2", drop.getFirstSelectedOption().getText());
     }
+    @Test
+    public void dropdownclass2() {
+        driver.switchTo().newWindow(WindowType.TAB);
+        driver.get("https://rahulshettyacademy.com/AutomationPractice/");
+        WebElement dropdownElement = driver.findElement(By.xpath("//input[@id='autocomplete']"));
+        dropdownElement.sendKeys("Aus");
+        List<WebElement> options = driver.findElements(By.xpath("//li[@class='ui-menu-item']"));
+        for (WebElement option : options) {
 
-
-
-    @AfterClass
-    public static void chromeclose(){
-        if (driver != null){
-            driver.quit();
+            if (option.getText().equals("Australia")) {
+                option.click();
+                break;
+            }
+        }
+        Assert.assertEquals("Australia", dropdownElement.getAttribute("value"));
+    }
+        @AfterClass
+        public static void chromeclose () {
+            if (driver != null) {
+                driver.quit();
+            }
         }
     }
-}
