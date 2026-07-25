@@ -53,6 +53,14 @@ public class dropdownclass {
         }
         Assert.assertEquals("Australia", dropdownElement.getAttribute("value"));
     }
+    @Test
+    public void checkboxClick(){
+      //  driver.switchTo().newWindow(WindowType.TAB);
+        driver.get("https://rahulshettyacademy.com/AutomationPractice/");
+        WebElement checkbox = driver.findElement(By.xpath("(//input[@type='checkbox'])[2]"));
+        checkbox.click();
+        Assert.assertTrue(checkbox.isSelected());
+    }
         @AfterClass
         public static void chromeclose () {
             if (driver != null) {

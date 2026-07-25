@@ -1,0 +1,146 @@
+Index: ../src/main/java/switchthePosition.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../src/main/java/switchthePosition.java b/../src/main/java/switchthePosition.java
+new file mode 100644
+--- /dev/null	(date 1783764569840)
++++ b/../src/main/java/switchthePosition.java	(date 1783764569840)
+@@ -0,0 +1,14 @@
++import org.junit.BeforeClass;
++import org.openqa.selenium.WebDriver;
++import org.openqa.selenium.chrome.ChromeDriver;
++
++public class switchthePosition {
++
++   static WebDriver driver;
++    @BeforeClass
++    public static void chromedetup(){
++      
++        driver = new ChromeDriver();
++    }
++
++}
+Index: ../src/main/java/handlingAmazonWindows.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../src/main/java/handlingAmazonWindows.java b/../src/main/java/handlingAmazonWindows.java
+new file mode 100644
+--- /dev/null	(date 1783619423545)
++++ b/../src/main/java/handlingAmazonWindows.java	(date 1783619423545)
+@@ -0,0 +1,59 @@
++import org.junit.AfterClass;
++import org.junit.Assert;
++import org.junit.BeforeClass;
++import org.junit.Test;
++import org.openqa.selenium.*;
++import org.openqa.selenium.chrome.ChromeDriver;
++import org.openqa.selenium.support.ui.ExpectedConditions;
++import org.openqa.selenium.support.ui.WebDriverWait;
++
++import java.time.Duration;
++
++public class handlingAmazonWindows {
++    static WebDriver driver;
++    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
++
++    @BeforeClass
++    public static void lounchChrome() {
++        System.setProperty("webdriver.chrome.driver", "\\Maven-project-development\\ChromeDriver\\chromedriver.exe");
++        driver = new ChromeDriver();
++        driver.manage().window().maximize();
++        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
++
++    }
++
++    @Test
++    public void selectAmazonProduct() {
++        driver.get("https://www.amazon.com");
++        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
++        WebElement searchBox = driver.findElement(By.xpath("//input[@id='twotabsearchtextbox']"));
++        searchBox.sendKeys("Iphone 17 pro max");
++        searchBox.sendKeys(Keys.ENTER);
++        WebElement productLink = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Apple iPhone 17 Pro Max, US Version, 256GB, eSIM, Cosmic Orange- Unlocked (Renewed)']")));
++        productLink.click();
++        String parentWindowHandle = driver.getWindowHandle();
++        for (int i = 0; i < 5; i++) {
++            driver.switchTo().newWindow(WindowType.TAB);
++
++            // String childWindowHandle  = String.valueOf(driver.switchTo().newWindow(WindowType.TAB));
++            driver.get("https://www.amazon.com/Apple-Version-Orange-Unlocked-Renewed/dp/B0FTC2PRVZ/ref=sr_1_1?dib=eyJ2IjoiMSJ9.Vudqhevj2dRM8tXLm5h2VDcTxQjeRcc-TRS6Ww4XhaTPXVYFj1LQM1hYLivhaULRCvBBLH519WpfM2ISZ_QN1ndC4_hdYQdwRHuBpkavKGLjXt5UDZzXwfOymE4RcrbxLaIlWUJlQRFXY-agRJoAf7ohent8fYwS5VZA86yYo4UWsXGLXWhQ9vl59lehJYOrhX_iYR_k0L1czgZbmpjXUa4F5n69v6rvCobK8Pjgt-4.ivg_oYfXun13RTQF-DNOMPsgLGstafA_zOxwfs_a4r0&dib_tag=se&keywords=Iphone+17+pro+max&qid=1783534251&sr=8-1");
++
++            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
++            Assert.assertEquals("Amazon.com: Apple iPhone 17 Pro Max, US Version, 256GB, eSIM, Cosmic Orange- Unlocked (Renewed) : Cell Phones & Accessories", driver.getTitle());
++            if (driver.getWindowHandles().equals(parentWindowHandle)) {
++                driver.close();
++            }
++
++            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(100));
++            driver.switchTo().window(parentWindowHandle);
++        }
++
++    }
++    @AfterClass
++    public static void closeChrome() {
++        if (driver != null) {
++            driver.quit();
++
++        }
++    }
++}
+Index: ../src/main/java/windowIframe.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../src/main/java/windowIframe.java b/../src/main/java/windowIframe.java
+new file mode 100644
+--- /dev/null	(date 1783620523023)
++++ b/../src/main/java/windowIframe.java	(date 1783620523023)
+@@ -0,0 +1,43 @@
++import org.junit.AfterClass;
++import org.junit.BeforeClass;
++import org.junit.Test;
++import org.openqa.selenium.By;
++import org.openqa.selenium.WebDriver;
++import org.openqa.selenium.WebElement;
++import org.openqa.selenium.chrome.ChromeDriver;
++import org.openqa.selenium.interactions.Actions;
++import org.openqa.selenium.support.ui.ExpectedConditions;
++import org.openqa.selenium.support.ui.WebDriverWait;
++
++public class windowIframe {
++     static WebDriver driver;
++      WebDriverWait wait =new WebDriverWait(driver, java.time.Duration.ofSeconds(10));
++        Actions act  = new Actions(driver);
++        @BeforeClass
++        public static void chromesetup(){
++            System.setProperty("Webdriver.chrome.driver","\\Maven-project-development\\ChromeDriver\\chromedriver.exe");
++            driver = new ChromeDriver();
++            driver.manage().window().maximize();
++            driver.manage().timeouts().implicitlyWait(java.time.Duration.ofSeconds(10));
++    }
++    @Test
++    public void iframeHandling(){
++            driver.get("https://jqueryui.com/droppable/");
++            WebElement iframe = driver.findElement(By.xpath("//iframe[@class='demo-frame']"));
++            driver.switchTo().frame(iframe);
++            WebElement draggframe = driver.findElement(By.xpath("//div[@id='draggable']"));
++            WebElement droppframe = driver.findElement(By.xpath("//div[@id='droppable']"));
++              act.dragAndDrop(draggframe,droppframe).perform();
++              driver.manage().timeouts().implicitlyWait(java.time.Duration.ofSeconds(10));
++
++            draggframe.click();
++    }
++
++    @AfterClass
++    public static void closechrome(){
++            if (driver!=null) {
++                driver.quit();
++
++            }
++        }
++}
