@@ -23,7 +23,6 @@ public class windowHandles {
         Assert.assertEquals("Amazon.com", driver.getTitle());
         driver.manage().timeouts().implicitlyWait(java.time.Duration.ofSeconds(10));
         driver.close();
-
     }
 
     @AfterClass

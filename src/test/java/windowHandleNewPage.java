@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class windowHandleNewPage {
+public class  windowHandleNewPage {
     static   WebDriver driver;
     static String DriverName ="Chrome";
     @BeforeClass

@@ -1,0 +1,7 @@
+<suite name="Default Suite">
+    <test thread-count="5" name="Maven-project-development">
+        <classes>
+            <class name="framesTest"/>
+        </classes>
+    </test>
+</suite>
