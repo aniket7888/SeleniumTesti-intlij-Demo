@@ -1,3 +1,4 @@
+import entities.explicitiWaitmodify;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -35,12 +36,11 @@ WindowHandleOnNewPage {
         Assert.assertEquals(cartadd.getText(),"1 in cart");
         driver.switchTo().newWindow(WindowType.TAB);
         driver.get("https://www.amazon.com/gp/cart/view.html?ref_=nav_cart");
-       WebElement cart = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@id='sc-subtotal-label-activecart']")));
-        Boolean isDisplayed = cart.isDisplayed();
-
+        WebElement element = driver.findElement(By.xpath("//span[@id='sc-subtotal-label-activecart']"));
+        WebElement cart1 = explicitiWaitmodify.explicitwaitcondition(driver,element);
+        Boolean isDisplayed = cart1.isDisplayed();
         Assert.assertTrue(isDisplayed);
     }
-
     @AfterClass
     public static void closeBrowser(){
         if(driver!=null){

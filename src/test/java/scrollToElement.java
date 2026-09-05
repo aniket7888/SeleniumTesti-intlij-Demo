@@ -20,22 +20,20 @@ public class scrollToElement
         driver.manage().timeouts().implicitlyWait(java.time.Duration.ofSeconds(10));
     }
     @Test
- public void scrollToElementLocator(){
+ public void scrollToElementLocator() {
         driver.get("https://www.amazon.com/");
-        WebElement element =driver.findElement(By.xpath("//span[text()='Best Sellers in Sports & Outdoors']"));
-       // js.executeScript("window.scrollBy(0,300);");
+        WebElement element = driver.findElement(By.xpath("//span[text()='Best Sellers in Sports & Outdoors']"));
+        // js.executeScript("window.scrollBy(0,300);");
         driver.manage().timeouts().implicitlyWait(java.time.Duration.ofSeconds(100));
-        js.executeScript("arguments[0].scrollIntoView(true);",element);
+        js.executeScript("arguments[0].scrollIntoView(true);", element);
 
     }
 
+    @AfterClass
+    public static void close(){
+        if(driver !=null){
+            driver.quit();
+        }
 
-
-//    @AfterClass
-//    public static void close(){
-//        if(driver !=null){
-//            driver.quit();
-//        }
-
-  //  }
+    }
 }
