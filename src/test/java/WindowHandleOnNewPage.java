@@ -42,6 +42,7 @@ WindowHandleOnNewPage {
         Assert.assertTrue(isDisplayed);
     }
     @AfterClass
+
     public static void closeBrowser(){
         if(driver!=null){
             driver.quit();

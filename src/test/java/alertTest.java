@@ -1,4 +1,5 @@
 
+import entities.ScreenshotListener;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,9 +8,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
-public class framesTest {
+@Listeners(ScreenshotListener.class)
+public class alertTest {
 
   static  WebDriver driver ;
     @BeforeClass
@@ -21,14 +23,14 @@ public class framesTest {
     }
 
     @Test
-    public void framesTest(){
+    public void alertTest(){
         driver.get("https://rahulshettyacademy.com/AutomationPractice/");
         WebElement frame = driver.findElement(By.xpath("(//input[@class='btn-style'])[1]"));
         frame.click();
         Alert alrt =driver.switchTo().alert();
         System.out.println("Alert Text: "+alrt.getText());
 
-        Assert.assertEquals("Hello , share this practice page and share your knowledge",alrt.getText());
+        Assert.assertEquals(" share this practice page and share your knowledge",alrt.getText());
         alrt.accept();
 
     }
