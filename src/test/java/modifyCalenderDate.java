@@ -25,6 +25,7 @@ public class modifyCalenderDate {
         WebElement pageload = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[text()='Domestic Flights in India']")));
        driver.findElement(By.xpath("//button[text()='One Way']")).click();
        driver.findElement(By.xpath("//span[text()='Departure']")).click();
+       driver.findElement(By.xpath("//table[@aria-label='Days in November 2026']/tbody/tr/td/div/button/span[text()='18 ']")).click();
     }
 
 
