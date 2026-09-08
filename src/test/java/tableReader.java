@@ -15,7 +15,6 @@ public class tableReader {
         System.setProperty("webdriver.chrome.driver", "\\Maven-project-development\\ChromeDriver\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-
     }
     @Test
     public void readTableText(){
